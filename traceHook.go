@@ -17,6 +17,16 @@ type TraceHook struct {
 	serviceName string
 }
 
+func NewTraceHook (
+	tracer ITracer,
+	serviceName string,
+) *TraceHook {
+	return &TraceHook{
+		tracer: tracer,
+		serviceName: serviceName,
+	}
+}
+
 var _ redis.Hook = (*TraceHook)(nil)
 
 func (hook *TraceHook) BeforeProcess(
